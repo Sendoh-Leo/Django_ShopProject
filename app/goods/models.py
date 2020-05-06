@@ -21,7 +21,7 @@ class GoodsCategory(models.Model):
     # 设置models有一个指向自己的外键
 
     parent_category = models.ForeignKey("self", on_delete=models.CASCADE, null=True, blank=True, verbose_name="父类目级别",
-                                        help_text="父目 录", related_name="sub_cat")
+                                        help_text="父目录", related_name="sub_cat")
 
     is_tab = models.BooleanField("是否导航", default=False, help_text="是否导航")
     add_time = models.DateTimeField("添加时间", default=datetime.now)
