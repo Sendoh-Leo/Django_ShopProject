@@ -11,7 +11,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ShopProject.settings")
 import django
 
 django.setup()
-
+#注意：导入数据库模型，一定要先加载Django配置和Django App
 from app.goods.models import Goods, GoodsCategory, GoodsImage
 from app.extra_apps.db_tools.data.product_data import row_data
 

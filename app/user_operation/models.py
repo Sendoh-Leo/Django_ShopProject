@@ -35,7 +35,8 @@ class UserAddress(models.Model):
     class Meta:
         verbose_name = '收货地址'
         verbose_name_plural = verbose_name
-    def __str__(self): return self.address
+    def __str__(self):
+        return self.address
 
 
 class UserLeavingMessage(models.Model):
