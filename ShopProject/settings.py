@@ -133,14 +133,14 @@ AUTH_PASSWORD_VALIDATORS = [
 #LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+#TIME_ZONE = 'UTC'
 #TIME_ZONE = 'Asia/shanghai'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+#USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
@@ -189,3 +189,9 @@ REGEX_MOBILE = '^1[345789]\d{9}$'
 
 # 云片网APIKEY
 APIKEY = "xxxx"
+
+# 支付宝配置信息
+APPID = '2016102200736216'
+# 支付宝相关的key
+private_key_path = os.path.join(BASE_DIR, 'app/trade/keys/private_key.txt')
+ali_key_path = os.path.join(BASE_DIR, 'app/trade/keys/ali_key.txt')

@@ -29,7 +29,7 @@ from app.goods.views import GoodsListViewSet, CategoryViewSet
 # goods_list = GoodsListViewSet.as_view({ 'get': 'list', })
 
 #自动生成路由和函数的对应关系
-from app.trade.views import ShoppingCartViewset, OrderViewset
+from app.trade.views import ShoppingCartViewset, OrderViewset, AlipayView
 from app.user_operation.views import UserFavViewset, LeavingMessageViewset, AddressViewset
 from app.users.views import SmsCodeViewset, UserViewset
 
@@ -72,6 +72,9 @@ urlpatterns = [
     #path('api-token-auth/', views.obtain_auth_token),
     #jwt token 路由配置
     path('jwt-auth/', obtain_jwt_token),
+
+    #配置支付宝的url。
+    path('alipay/return/', AlipayView.as_view())
 ]
 
 # 将DefaultRouter注册的路由和视图函数对应关系添加到urlpatterns里面。

@@ -17,7 +17,7 @@ from datetime import datetime
 from urllib.parse import quote_plus
 from urllib.parse import urlparse, parse_qs
 
-import alipay as alipay
+#import alipay as alipay
 from Crypto.Hash import SHA256
 from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5
