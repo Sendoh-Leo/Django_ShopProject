@@ -23,7 +23,7 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_jwt.views import obtain_jwt_token
 
 from ShopProject.settings import MEDIA_ROOT
-from app.goods.views import GoodsListViewSet, CategoryViewSet
+from app.goods.views import GoodsListViewSet, CategoryViewSet, BannerViewset
 
 # #绑定get方法和list函数
 # goods_list = GoodsListViewSet.as_view({ 'get': 'list', })
@@ -48,6 +48,8 @@ router.register(r'address', AddressViewset, basename="address")
 router.register(r'shopcarts', ShoppingCartViewset, basename="shopcarts")
 #配置订单的url
 router.register(r'orders', OrderViewset, basename="orders")
+#轮播图url
+router.register(r'banners', BannerViewset, basename="banners")
 
 urlpatterns = [
     #path('admin/', admin.site.urls),

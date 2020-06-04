@@ -9,8 +9,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from app.goods.filters import GoodsFilter
-from app.goods.models import Goods, GoodsCategory
-from app.goods.serializers import GoodsSerializer, CategorySerializer
+from app.goods.models import Goods, GoodsCategory, Banner
+from app.goods.serializers import GoodsSerializer, CategorySerializer, BannerSerializer
 
 """
 方法一.基于APIView实现视图函数
@@ -56,6 +56,13 @@ class GoodsListViewSet(mixins.ListModelMixin,mixins.RetrieveModelMixin,viewsets.
     search_fields = ('=name','goods_brief')
     #排序
     ordering_fields = ('sold_num', 'add_time')
+    # 商品点击数 + 1
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        instance.click_num += 1
+        instance.save()
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
 
 class CategoryViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     ''' list:商品分类列表数据 '''
@@ -64,3 +71,8 @@ class CategoryViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets
     #queryset = GoodsCategory.objects.all()
     #序列化
     serializer_class = CategorySerializer
+
+class BannerViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """ 首页轮播图 """
+    queryset = Banner.objects.all().order_by("index")
+    serializer_class = BannerSerializer

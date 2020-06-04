@@ -3,7 +3,7 @@
 #author:CQ_Liu
 from rest_framework import serializers
 
-from app.goods.models import Goods, GoodsCategory, GoodsImage
+from app.goods.models import Goods, GoodsCategory, GoodsImage, Banner
 
 """
 方法一：serializers序列化
@@ -59,5 +59,11 @@ class GoodsSerializer(serializers.ModelSerializer):
         model = Goods
         #fields = '__all__'  #all返回所有字段
         exclude = ['goods_desc',]  #不需要序列化的字段
+
+class BannerSerializer(serializers.ModelSerializer):
+    ''' 轮播图 '''
+    class Meta:
+        model = Banner
+        fields = "__all__"
 
 

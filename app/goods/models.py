@@ -41,6 +41,10 @@ class Goods(models.Model):
     sold_num = models.IntegerField("商品销售量", default=0)
     fav_num = models.IntegerField("收藏数", default=0)
     goods_num = models.IntegerField("库存数", default=0)
+        #商品库存数量修改的行为发生在下列三种情况:
+        # 添加商品到购物车
+        # 修改购物车数量
+        # 删除购物车记录
     market_price = models.FloatField("市场价格", default=0)
     shop_price = models.FloatField("本店价格", default=0)
     goods_brief = models.TextField("商品简短描述", max_length=500)
@@ -101,7 +105,7 @@ class Banner(models.Model):
 
     def __str__(self):
         #return self.goods.name
-        return self.image
+        return self.image.name
 
 class HotSearchWords(models.Model):
     """ 搜索栏下方热搜词 """

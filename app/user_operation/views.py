@@ -26,6 +26,16 @@ class UserFavViewset(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.Crea
     # 搜索的字段
     lookup_field = 'goods_id'
 
+    # 用户收藏的商品数量+1
+    def perform_create(self, serializer):
+        # 对象： UserFav商品收藏的对象
+        instance = serializer.save()
+        # 获取用户收藏的商品对象
+        goods = instance.goods
+        # 更新收藏商品的收藏数
+        goods.fav_num += 1
+        # 商品信息修改后保存到数据库中
+        goods.save()
     # 动态选择serializer
     def get_serializer_class(self):
         if self.action == "list":
@@ -37,6 +47,8 @@ class UserFavViewset(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.Crea
     def get_queryset(self):
 # 只能查看当前登录用户的收藏，不会获取所有用户的收藏
         return UserFav.objects.filter(user=self.request.user)
+
+
 
 class LeavingMessageViewset(mixins.ListModelMixin, mixins.DestroyModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
     """ list:获取用户留言 create: 添加留言 delete: 删除留言功能 """
