@@ -30,7 +30,7 @@ openpyxl==3.0.3
 Pillow==7.1.2
 PyJWT==1.7.1
 pytz==2020.1
-PyYAML==5.3.1
+PyYAML==5.4
 requests==2.23.0
 six==1.10.0
 sqlparse==0.3.1
